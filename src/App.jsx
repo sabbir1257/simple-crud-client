@@ -10,15 +10,19 @@ function App() {
     console.log(user);
 
     fetch("http://localhost:5001/users", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.insertedId) {
+          alert("Users added successfully");
+          form.reset();
+        }
       });
   };
 
